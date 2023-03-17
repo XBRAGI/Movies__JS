@@ -37,6 +37,9 @@
 
 4) Потренироваться и переписать цикл по другому*/
 
+
+/* Вариант с одним циклом:
+
 const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?');
 
 const personalMovieDB = {
@@ -57,6 +60,47 @@ for (let i = 0; i < 2; i++) {
 	} else {
 		console.log('Вы не ввели данные');
 		i--;
+	}
+}
+
+if (personalMovieDB.count < 10) {
+	console.log('Просмотрено довольно мало фильмов');
+} else if (personalMovieDB.count > 10 && personalMovieDB.count < 30) {
+	console.log('Вы классический зритель');
+} else if (personalMovieDB.count > 30) {
+	console.log('Вы киноман');
+} else {
+	console.log('Ошибка');
+}
+
+console.log(personalMovieDB); */
+
+
+// Вариант с другим циклом:
+
+const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?');
+
+const personalMovieDB = {
+	count: numberOfFilms,
+	movies: {},
+	actors: {},
+	genres: [],
+	privat: false
+};
+
+let numOfQuestion = 0;
+
+while (numOfQuestion < 2) {
+	const lastOfMovie = prompt('Один из последних просмотренных фильмов?');
+	const scoreOfMovie = prompt('На сколько оцените его?');
+	numOfQuestion = numOfQuestion + 1;
+	
+	if (lastOfMovie !== '' && scoreOfMovie !== '' && lastOfMovie !== null && scoreOfMovie !== null && lastOfMovie.length < 50) {
+		personalMovieDB.movies[lastOfMovie] = scoreOfMovie;
+		console.log('Всё получилось');
+	} else {
+		console.log('Вы не ввели данные');
+		numOfQuestion = numOfQuestion - 1;
 	}
 }
 
